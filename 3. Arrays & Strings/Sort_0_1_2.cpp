@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
         cin >> arr[i];
 
     right = n - 1;
-    while (i < right) // since all the unsorted elements will lie only between current and right. The ones beyond them are already sorted
+    while (i <= right) // since all the unsorted elements will lie only between current and right. The ones beyond them are already sorted
     {
         if (arr[i] == 0)
         {
