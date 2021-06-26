@@ -22,14 +22,13 @@ int max_sum_path(int arr1[], int arr2[], int n, int m)
             s2 += arr2[j];
             j++;
         }
-        else
+        else // as soon as they are equal i.e. a common point is reached
         {
             max_sum += max(s1, s2);
             s1 = 0;
             s2 = 0;
 
-            // Keep updating result while there are more
-            // common elements
+            // Keep updating result while there are more common elements
             int temp = i;
             while (i < m && arr1[i] == arr2[j])
                 s1 += arr1[i++];

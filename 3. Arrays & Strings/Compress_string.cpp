@@ -4,6 +4,7 @@ replace consecutive duplicate occurrences with the count of repetitions.
 Example:
 Sample Input 1: aaabbccdsa
 Sample Output 1: a3b2c2dsa
+T=O(n), S=O(1)
 */
 #include <iostream>
 #include <cstring>

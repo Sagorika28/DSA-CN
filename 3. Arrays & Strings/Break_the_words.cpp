@@ -22,7 +22,7 @@ int main(int argc, char const *argv[])
             if (size >= 4 and size % 2 == 0)
             {
                 mid = (start + end) / 2;
-                for (int k = 0; k < size; k++)
+                for (int k = 0; k < size; k++)  // put a space at the middle of the word
                 {
                     if ((k + start) == mid)
                         cout << " ";
