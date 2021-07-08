@@ -1,0 +1,22 @@
+/* 
+To find	nth Fibonacci number using recursion.
+*/
+// T=O() , S=O()
+#include <iostream>
+using namespace std;
+
+int fib(int n)
+{
+    if (n < 2)
+        return n;
+
+    return fib(n - 1) + fib(n - 2);
+}
+
+int main(int argc, char const *argv[])
+{
+    int n;
+    cin >> n;
+    cout << fib(n);
+    return 0;
+}
