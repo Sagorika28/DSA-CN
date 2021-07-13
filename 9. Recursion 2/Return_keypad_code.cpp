@@ -112,8 +112,6 @@ int main(int argc, char const *argv[])
     int n;
     cin >> n;
     string *output = new string[100000000]; // creating a string array
-    unordered_map<int, char[]> um;
-
     int count = kcode(n, output);
     for (int i = 0; i < count; i++)
         cout << output[i] << endl;
