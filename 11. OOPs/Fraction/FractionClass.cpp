@@ -23,7 +23,7 @@ public:
         int j = min(this->numerator, this->denominator);
         for (int i = 1; i <= j; i++)
         {
-            if (numerator % j == 0 and denominator % j == 0)
+            if (numerator % i == 0 and denominator % i == 0)
                 gcd = i;
         }
         numerator = numerator / gcd;
