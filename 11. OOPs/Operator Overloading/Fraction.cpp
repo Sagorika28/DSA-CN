@@ -84,4 +84,12 @@ public:
     {
         return (numerator == f2.numerator and denominator == f2.denominator);
     }
+
+    // pre-increment
+    Fraction &operator++() // returning a fraction object so that f3=++f1 works, returning through reference so that buffer copy isn't created rather original object is passed
+    {
+        numerator = numerator + denominator;
+        simplify();
+        return *this; // return the object having values, pointed by this pointer
+    }
 };
