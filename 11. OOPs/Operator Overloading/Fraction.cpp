@@ -92,4 +92,28 @@ public:
         simplify();
         return *this; // return the object having values, pointed by this pointer
     }
+
+    // post-increment
+    Fraction operator++(int) // int denotes it's for post increment
+    {
+        Fraction fnew(numerator, denominator);
+        numerator = numerator + denominator;
+        simplify();
+        fnew.simplify();
+        return fnew; // since the old value is returned to display in post increment, the value is changed internally
+    }
+
+    // +=
+    Fraction &operator+=(Fraction const &f2)
+    {
+        int x, y;
+        int lcm = denominator * f2.denominator;
+        x = lcm / denominator;
+        y = lcm / f2.denominator;
+        int num = (x * numerator + y * f2.numerator);
+        numerator = num; // because only the lhs keeps changing, rhs remains the same in += operation
+        denominator = lcm;
+        simplify();
+        return *this;
+    }
 };
