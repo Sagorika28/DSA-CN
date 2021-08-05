@@ -19,12 +19,11 @@ int countGreater(int *input, int n, int *fact, int *freq)
     }
 
     //iterate over the frequency array
-    for (int i = input[0]; i < 10; i++)
+    for (int i = input[0] + 1; i < 10; i++)
     {
         if (freq[i] > 0)
-            ans += fact[n - 1];
+            ans += (fact[n - 1] * freq[i]) / deno;
     }
-    ans = (ans * freq[input[0]]) / deno;
 
     // find the combinations of numbers > given no. by recursively calling on the remaining digits except the 1st one
     freq[input[0]]--; // to get rid of the first digit from being included
