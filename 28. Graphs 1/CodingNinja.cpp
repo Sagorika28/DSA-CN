@@ -1,11 +1,11 @@
 /* 
-Given a NxM matrix containing Uppercase English Alphabets only. Your task is to tell if there is a path in the given matrix which makes the sentence “CODING” .
+Given a NxM matrix containing Uppercase English Alphabets only. Your task is to tell if there is a path in the given matrix which makes the sentence “CODINGNINJA” .
 There is a path from any cell to all its neighbouring cells. For a particular cell, neighbouring cells are those cells that share an edge or a corner with the cell.
 Input Format :
 The first line of input contains two space separated integers N and M, where N is number of rows and M is the number of columns in the matrix. 
 Each of the following N lines contain M characters. Please note that characters are not space separated.
 Output Format :
-Print 1 if there is a path which makes the sentence “CODING” else print 0.
+Print 1 if there is a path which makes the sentence “CODINGNINJA” else print 0.
 Constraints :
 1 <= N <= 1000
 1 <= M <= 1000
@@ -17,52 +17,68 @@ XOXIXGXIXJX
 Sample Output 1:
 1 
 */
-
 #include <iostream>
 #include <cstring>
 using namespace std;
 
 bool ans = false;
 
-void dfs(char mat[][1000], int n, int m, bool **vis, char *word, int i, int j)
+bool dfs(char mat[][1000], int n, int m, bool **vis, char *word, int i, int j)
 {
     // base case when the whole string/word has been found
     if (strlen(word) == 0)
     {
         ans = true;
-        return;
+        return true;
     }
 
     // invalid char - out of bounds
     if (i < 0 or i > n - 1 or j < 0 or j > m - 1)
-        return;
+        return false;
 
     // invalid char - already visited
     if (vis[i][j])
-        return;
+        return false;
 
     // invalid char - not the next char
     if (mat[i][j] != word[0])
-        return;
+        return false;
 
     // mark the current char visited
     vis[i][j] = true;
 
     // check in all 8 possible directions and call dfs from there on the next character of word
-    dfs(mat, n, m, vis, word + 1, i - 1, j);
-    dfs(mat, n, m, vis, word + 1, i - 1, j + 1);
-    dfs(mat, n, m, vis, word + 1, i, j + 1);
-    dfs(mat, n, m, vis, word + 1, i + 1, j + 1);
-    dfs(mat, n, m, vis, word + 1, i + 1, j);
-    dfs(mat, n, m, vis, word + 1, i + 1, j - 1);
-    dfs(mat, n, m, vis, word + 1, i, j - 1);
-    dfs(mat, n, m, vis, word + 1, i - 1, j - 1);
+
+    if (dfs(mat, n, m, vis, word + 1, i - 1, j))
+        return true;
+
+    if (dfs(mat, n, m, vis, word + 1, i - 1, j + 1))
+        return true;
+
+    if (dfs(mat, n, m, vis, word + 1, i, j + 1))
+        return true;
+
+    if (dfs(mat, n, m, vis, word + 1, i + 1, j + 1))
+        return true;
+
+    if (dfs(mat, n, m, vis, word + 1, i + 1, j))
+        return true;
+
+    if (dfs(mat, n, m, vis, word + 1, i + 1, j - 1))
+        return true;
+
+    if (dfs(mat, n, m, vis, word + 1, i, j - 1))
+        return true;
+
+    if (dfs(mat, n, m, vis, word + 1, i - 1, j - 1))
+        return true;
 
     // next character not found
     vis[i][j] = false;
+    return false;
 }
 
-int match(char *word, int n, int m, char mat[][1000])
+bool match(char *word, int n, int m, char mat[][1000])
 {
     bool **vis = new bool *[n];
     for (int i = 0; i < n; i++)
@@ -82,7 +98,7 @@ int match(char *word, int n, int m, char mat[][1000])
             {
                 dfs(mat, n, m, vis, word, i, j);
                 if (ans)
-                    return 1;
+                    return true;
             }
         }
     }
@@ -91,13 +107,13 @@ int match(char *word, int n, int m, char mat[][1000])
         delete[] vis[i];
     delete[] vis;
 
-    return 0;
+    return false;
 }
 
 int main(int argc, char const *argv[])
 {
     int n, m;
-    char word[7] = "CODING";
+    char word[12] = "CODINGNINJA";
     cin >> n >> m;
     char mat[1000][1000];
     for (int i = 0; i < n; i++)
