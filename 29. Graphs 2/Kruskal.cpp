@@ -101,6 +101,9 @@ void kruskals(Edge *input, int n, int e)
         else
             cout << output[i].dest << " " << output[i].source << " " << output[i].weight << endl;
     }
+
+    delete[] parent;
+    delete[] output;
 }
 
 int main(int argc, char const *argv[])
