@@ -26,7 +26,7 @@ Sample Output 1 :
 0 1 3
 0 3 5 
 */
-// T=O(E log V)
+// T=O(E log E + E.V)
 
 #include <iostream>
 #include <algorithm>
@@ -48,7 +48,7 @@ bool compare(Edge e1, Edge e2)
 }
 
 // find the first parent
-int findParent(int v, int *parent)
+int findParent(int v, int *parent) // FIND part of union-find
 {
     if (v == parent[v])
         return v;
@@ -58,7 +58,7 @@ int findParent(int v, int *parent)
 
 void kruskals(Edge *input, int n, int e)
 {
-    // sort the input edge array according to weights in ascending order
+    // sort the input edge array according to weights in ascending order -- E log E for sorting
     sort(input, input + e, compare);
 
     // make an output array of MST edges
@@ -69,13 +69,14 @@ void kruskals(Edge *input, int n, int e)
     for (int i = 0; i < n; i++)
         parent[i] = i;
 
-    // pick edges 1 by 1 and check if it's safe to add in the MST or not
+    // pick edges 1 by 1 and check if it's safe to add in the MST or not -- E.V for cycle detection
     int count = 0, i = 0;
     while (count < n - 1)
     {
         Edge currentEdge = input[i];
 
-        // check for cycle by checking if the src and dest vertices of an edge have the same parents, if not then add edge in MST
+        // check for cycle by checking if the src and dest vertices of an edge have the same parents/roots, 
+        // if not then add edge in MST (Union-find algo) - UNION part of union-find algo 
         int srcParent = findParent(currentEdge.source, parent);
         int destParent = findParent(currentEdge.dest, parent);
 
