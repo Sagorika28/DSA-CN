@@ -29,6 +29,7 @@ Sample Output 1 :
 // T=O(n*n)
 
 #include <iostream>
+#include <climits>
 using namespace std;
 
 int findMinVertex(int *weight, int n, bool *visVertex)
