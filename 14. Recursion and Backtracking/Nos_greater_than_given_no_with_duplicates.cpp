@@ -45,6 +45,7 @@ int main(int argc, char const *argv[])
         fact[i + 1] = (i + 1) * fact[i];
         freq[input[i]]++;
     }
+
     cout << countGreater(input, n, fact, freq);
     delete[] input;
     delete[] fact;
