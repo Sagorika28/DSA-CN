@@ -4,7 +4,7 @@
      34543
     4567654
 */
-// T=O(n^3) , S=O(n^2)
+// T=O(n^2) , S=O(n^2)
 #include <iostream>
 using namespace std;
 int main(int argc, char const *argv[])

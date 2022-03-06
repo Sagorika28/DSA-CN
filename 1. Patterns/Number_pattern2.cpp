@@ -2,15 +2,15 @@
 You are given with an input number N, then you have to print the given star pattern corresponding to that number N.
 For example, if N=4
 Pattern output:
-1 1
-12 21
-123 321
+1      1
+12    21
+123  321
 12344321
 For N=5, the pattern output would be:
-1 1
-12 21
-123 321
-1234 4321
+1        1
+12      21
+123    321
+1234  4321
 1234554321
 */
 #include <iostream>
