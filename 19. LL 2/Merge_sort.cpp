@@ -27,7 +27,6 @@ Sample Output 2 :
 #include <iostream>
 #include "Node.cpp"
 using namespace std;
-int len = 0;
 Node *takeInput()
 {
     int data;
@@ -44,7 +43,6 @@ Node *takeInput()
         }
         else
         {
-            len++;
             tail->next = newNode;
             tail = tail->next;
         }
